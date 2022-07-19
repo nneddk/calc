@@ -12,6 +12,7 @@ const multiplyButton = document.getElementById('multiply-button');
 const divideButton = document.getElementById('divide-button');
 
 const decimalButton = document.getElementById('decimal-button');
+const moduloButton = document.getElementById('modulo-button');
 
 const zeroButton = document.getElementById('zero-button');
 const oneButton = document.getElementById('one-button');
@@ -26,8 +27,10 @@ const sevenButton = document.getElementById('seven-button');
 const eightButton = document.getElementById('eight-button');
 const nineButton = document.getElementById('nine-button');
 
+decimalButton.onclick = function(){
+    setter('.');
+}
 zeroButton.onclick = function(){
-    
     setter(0);
 }
 oneButton.onclick = function(){
@@ -59,9 +62,16 @@ nineButton.onclick = function(){
 }
 
 function setter(num){
+    if (eqCheck == 1){
+        numberDisplay.textContent = '';
+        eqCheck = 0;
+    }
     if(numberDisplay.textContent.length <= 23){
         numberDisplay.textContent = numberDisplay.textContent + num;
     }
+}
+moduloButton.onclick = function(){
+    operatorSetter('%');
 }
 addButton.onclick = function(){
     operatorSetter('+');
@@ -75,16 +85,48 @@ multiplyButton.onclick = function(){
 divideButton.onclick = function(){
     operatorSetter('/');
 }
-function operatorSetter(operator){
-    operatorDisplay.textContent = operator;
+let operator = '';
+let eqCheck = 0;
+equalButton.onclick = function(){
+    numberDisplay.textContent = equate(Number(containerDisplay.textContent), Number(numberDisplay.textContent));
+    operatorDisplay.textContent = '';
+    containerDisplay.textContent = '';
+    eqCheck = 1;
 }
+function operatorSetter(op){
+    
+    containerDisplay.textContent = equate(Number(containerDisplay.textContent), Number(numberDisplay.textContent));
+    operatorDisplay.textContent = op;
+    numberDisplay.textContent = '';
+    operator = op;
+}
+
 clearButton.onclick = function(){
     numberDisplay.textContent = '';
     operatorDisplay.textContent = '';
     containerDisplay.textContent = '';
+    operator = '';
 }
 
 eraseButton.onclick = function(){
     numberDisplay.textContent = numberDisplay.textContent.slice(0, -1);
 }
 
+function equate(num1, num2){
+    switch (operator){
+        case '+':
+            return (num1+num2).toFixed(2);
+        case '-':
+            return (num1-num2).toFixed(2);
+        case 'x':
+            return (num1*num2).toFixed(2);
+        case '/':
+            return (num1/num2).toFixed(2);
+        case '%':
+            return (num1%num2).toFixed(2);
+        default:
+            return num2;
+            
+    }
+
+}

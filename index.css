@@ -1,6 +1,7 @@
 body{
     background-image: linear-gradient(aqua,orange);
 }
+
 #main-page{
     display:flex;
     height: 100vh;
@@ -28,7 +29,6 @@ body{
     border-radius: 9999px;
     display:flex;
     align-items: center;
-
     background-color: rgb(0,0,0, 0.2);
 }
 #operator-display{
@@ -50,13 +50,13 @@ body{
 #container-display{
     text-align: end;
     font-size: 3vmin;
-    height:30%;
+    height:3vmin;
     color:grey;
 }
 #number-display{
     text-align: end;
     font-size: 4vmin;
-    height:50%;
+    height:5vmin;
     color:whitesmoke;
     overflow-wrap: break-word;
 }
