@@ -8,18 +8,24 @@ body{
     align-items: center;
 }
 #calculator-outline{
-    height: 80vmin;
-    width: 50vmin;
+    height: 90vmin;
+    width: 60vmin;
     display:grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     gap: 0.5em;
     
 }
+#number-buttons{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5em;
+}
+
 #calculator-display{
     grid-column: 1/5;
     border-radius: 9999px;
-    border:solid;
     display:flex;
     align-items: center;
 
@@ -52,11 +58,15 @@ body{
     font-size: 4vmin;
     height:50%;
     color:whitesmoke;
+    overflow-wrap: break-word;
+}
+#number-buttons{
+    grid-column: 1/4;
+    grid-row: 3/6;
 }
 
-
 #equals-button{
-    grid-column: 3/5;
+
 }
 #zero-button{
     grid-column: 1/3;
